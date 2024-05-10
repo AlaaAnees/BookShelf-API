@@ -1,29 +1,30 @@
 // require('dotenv').config()
-const express = require('express');
+const express = require("express");
 const app = express();
-const PORT = process.env.PORT ||3000 ;
+const PORT = process.env.PORT || 3000;
 
-const cors = require('cors');
+const cors = require("cors");
 
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 const DB_URL = "mongodb://localhost:27017/BookShelf";
-mongoose.connect(DB_URL,{  autoIndex: true })
-.then(()=>{console.log("connected")});
+mongoose.connect(DB_URL, { autoIndex: true }).then(() => {
+  console.log("connected");
+});
 
-app.use(express.urlencoded({extended:true}));
-app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 app.use(cors());
+app.use(express.json());
 
-const AuthRoutes = require("./Routes/AuthRoutes")
-const UsersRoutes = require("./Routes/UserRoutes")
-const BookRoutes= require("./Routes/BookRoutes")
-const CartRoutes=require("./Routes/CartRoutes")
+const AuthRoutes = require("./Routes/AuthRoutes");
+const UsersRoutes = require("./Routes/UserRoutes");
+const BookRoutes = require("./Routes/BookRoutes");
+const CartRoutes = require("./Routes/CartRoutes");
 
-app.use("/auth",AuthRoutes)
-app.use("/user",UsersRoutes)
-app.use("/book",BookRoutes)
-app.use("/cart",CartRoutes)
+app.use("/auth", AuthRoutes);
+app.use("/user", UsersRoutes);
+app.use("/book", BookRoutes);
+app.use("/cart", CartRoutes);
 
-
-
-app.listen(PORT, ()=>{console.log("http://localhost:"+PORT)});
+app.listen(PORT, () => {
+  console.log("http://localhost:" + PORT);
+});

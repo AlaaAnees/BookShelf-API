@@ -1,0 +1,694 @@
+{
+	"info": {
+		"_postman_id": "193982d7-78a5-4398-9564-cc1e6c85cbdd",
+		"name": "Book Store API",
+		"description": "Welcome to the Book Store API! This API enables you to store, edit and share the details of any book. All of these operations are secured by a JWT token that is sent in the headers of every request (i.e the custom x-book-store-api header). So dive into these docs and have fun!",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "25806162"
+	},
+	"item": [
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "Sign up.",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"Aml Ibrahim\",\n    \"email\":\"aml@gmail.com\",\n\t\"password\": \"12345678\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:3000/auth/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"auth",
+								"register"
+							]
+						},
+						"description": "A request used to create a new user account. In order to create an account, a user must supply:\n- a first name that has at least 2 non-whitespace characters.\n- a last name that has at least 2 non-whitespace characters.\n- a valid email address as his/her username.\n- a strong password. This app considers a strong password to be one that is at least 8 characters long and has at least one lowercase letter, one uppercase letter, one number and one symbol/special character.\n\nIf this request is successful, its response will contain a token which must be used when interacting with the endpoints of this app that require authentication e.g the one for creating a book."
+					},
+					"response": []
+				},
+				{
+					"name": "Log in.",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"email\": \"aml@gmail.com\",\n\t\"password\": \"12345678\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:3000/auth/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"auth",
+								"login"
+							]
+						},
+						"description": "A request for logging into this app. If this request is successful, its response will contain a token that must be used when interacting with the endpoints of this app that require authentication e.g the one for creating a book."
+					},
+					"response": []
+				},
+				{
+					"name": "addFavourite",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1ZmJiMWVhNzAwMGM4ZDA3YWZjMzczNiIsImVtYWlsIjoiYW1sQGdtYWlsLmNvbSIsImlhdCI6MTcxMDk5Mzk3MH0.OGGw5N6IjU86wL_C4K4GeeY1KEeZVacJn8DzkS6iFNA",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"bookId\":5}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/user/add-favourite",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"user",
+								"add-favourite"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "removeFavourite",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1ZmJiMWVhNzAwMGM4ZDA3YWZjMzczNiIsImVtYWlsIjoiYW1sQGdtYWlsLmNvbSIsImlhdCI6MTcxMDk5Mzk3MH0.OGGw5N6IjU86wL_C4K4GeeY1KEeZVacJn8DzkS6iFNA",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"bookId\":5}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/user/delete-favourite",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"user",
+								"delete-favourite"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "checkFavourite",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1ZmJiMWVhNzAwMGM4ZDA3YWZjMzczNiIsImVtYWlsIjoiYW1sQGdtYWlsLmNvbSIsImlhdCI6MTcxMDk5Mzk3MH0.OGGw5N6IjU86wL_C4K4GeeY1KEeZVacJn8DzkS6iFNA",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"bookId\":5}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/user/check-favourite",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"user",
+								"check-favourite"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "Requests that are specific to the accounts of users e.g sign up, log in etc.",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Books",
+			"item": [
+				{
+					"name": "Get all books.",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "x-book-store-authentication",
+								"type": "text",
+								"value": "<JWT_TOKEN>"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3000/book/all",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"book",
+								"all"
+							]
+						},
+						"description": "Get all the books in the app that are either marked as public books or which belong to you."
+					},
+					"response": []
+				},
+				{
+					"name": "Get a book by id",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "x-book-store-authentication",
+								"type": "text",
+								"value": "<JWT_TOKEN>"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3000/book/id/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"book",
+								"id",
+								"1"
+							]
+						},
+						"description": "Get a specific book, identified by its ID. The book will only be returned if you own it or its owner has marked it as a public book. You must supply the book's ID in the request URL's path."
+					},
+					"response": []
+				},
+				{
+					"name": "Get a book by title",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "x-book-store-authentication",
+								"type": "text",
+								"value": "<JWT_TOKEN>"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3000/book/title/Flex 3 in Action",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"book",
+								"title",
+								"Flex 3 in Action"
+							]
+						},
+						"description": "Get a specific book, identified by its ID. The book will only be returned if you own it or its owner has marked it as a public book. You must supply the book's ID in the request URL's path."
+					},
+					"response": []
+				},
+				{
+					"name": "Get a book by genre",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "x-book-store-authentication",
+								"type": "text",
+								"value": "<JWT_TOKEN>"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3000/book/genre/Internet",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"book",
+								"genre",
+								"Internet"
+							]
+						},
+						"description": "Get a specific book, identified by its ID. The book will only be returned if you own it or its owner has marked it as a public book. You must supply the book's ID in the request URL's path."
+					},
+					"response": []
+				},
+				{
+					"name": "Get a book by author",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "x-book-store-authentication",
+								"type": "text",
+								"value": "<JWT_TOKEN>"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3000/book/author/Faisal Abid",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"book",
+								"author",
+								"Faisal Abid"
+							]
+						},
+						"description": "Get a specific book, identified by its ID. The book will only be returned if you own it or its owner has marked it as a public book. You must supply the book's ID in the request URL's path."
+					},
+					"response": []
+				},
+				{
+					"name": "addReview",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1ZmJiMWVhNzAwMGM4ZDA3YWZjMzczNiIsImVtYWlsIjoiYW1sQGdtYWlsLmNvbSIsImlhdCI6MTcxMDk5Mzk3MH0.OGGw5N6IjU86wL_C4K4GeeY1KEeZVacJn8DzkS6iFNA",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"bookId\":5,\r\n    \"stars\":5,\r\n    \"comment\":\"nice book\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/book/add-review",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"book",
+								"add-review"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "bookReviews",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/book/reviews/5",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"book",
+								"reviews",
+								"5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get All authors",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/book/author/all",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"book",
+								"author",
+								"all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get All genre",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/book/genre/all",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"book",
+								"genre",
+								"all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "checkReviewed",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1ZmJiMWVhNzAwMGM4ZDA3YWZjMzczNiIsImVtYWlsIjoiYW1sQGdtYWlsLmNvbSIsImlhdCI6MTcxMDk5Mzk3MH0.OGGw5N6IjU86wL_C4K4GeeY1KEeZVacJn8DzkS6iFNA",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3000/book/review-check/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"book",
+								"review-check",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "A collection of requests for managing and/or viewing the books stored in the app."
+		},
+		{
+			"name": "Cart",
+			"item": [
+				{
+					"name": "getCart",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1ZmJiMWVhNzAwMGM4ZDA3YWZjMzczNiIsImVtYWlsIjoiYW1sQGdtYWlsLmNvbSIsImlhdCI6MTcxMDk5Mzk3MH0.OGGw5N6IjU86wL_C4K4GeeY1KEeZVacJn8DzkS6iFNA",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3000/cart",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"cart"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "addBook",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1ZmJiMWVhNzAwMGM4ZDA3YWZjMzczNiIsImVtYWlsIjoiYW1sQGdtYWlsLmNvbSIsImlhdCI6MTcxMDk5Mzk3MH0.OGGw5N6IjU86wL_C4K4GeeY1KEeZVacJn8DzkS6iFNA",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"bookId\":3\r\n   \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/cart/add-book",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"cart",
+								"add-book"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "removeBook",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1ZmJiMWVhNzAwMGM4ZDA3YWZjMzczNiIsImVtYWlsIjoiYW1sQGdtYWlsLmNvbSIsImlhdCI6MTcxMDk5Mzk3MH0.OGGw5N6IjU86wL_C4K4GeeY1KEeZVacJn8DzkS6iFNA",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"bookId\":3\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/cart/remove-book",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"cart",
+								"remove-book"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "checkOut",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1ZmJiMWVhNzAwMGM4ZDA3YWZjMzczNiIsImVtYWlsIjoiYW1sQGdtYWlsLmNvbSIsImlhdCI6MTcxMDk5Mzk3MH0.OGGw5N6IjU86wL_C4K4GeeY1KEeZVacJn8DzkS6iFNA",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3000/cart/check-out",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"cart",
+								"check-out"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "decrementBook",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1ZmJiMWVhNzAwMGM4ZDA3YWZjMzczNiIsImVtYWlsIjoiYW1sQGdtYWlsLmNvbSIsImlhdCI6MTcxMDk5Mzk3MH0.OGGw5N6IjU86wL_C4K4GeeY1KEeZVacJn8DzkS6iFNA",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"bookId\":1}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/cart/decrement-book",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"cart",
+								"decrement-book"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "x-book-store-authentication",
+			"value": "",
+			"type": "string"
+		}
+	]
+}
